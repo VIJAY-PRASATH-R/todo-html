@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Notes</title>
+  <link rel="stylesheet" href="./notes.css">
+</head>
+<body>
+  <div class="container">
+    <h2>📒 Notes</h2>
+    <a href="index.html">⬅️ Back</a>
+    <textarea id="notes-area" placeholder="Write your notes here..."></textarea>
+    <button onclick="clearNotes()">❌ Clear</button>
+  </div>
+  <script>
+    function clearNotes() {
+      document.getElementById("notes-area").value = "";
+    }
+  </script>
+</body>
+</html>

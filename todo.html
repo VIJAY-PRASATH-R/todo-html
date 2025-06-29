@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Notes</title>
+  <link rel="stylesheet" href="./todo.css">
+</head>
+<body>
+  <div class="container">
+    <h2>📝 My To-Do List</h2>
+    <a href="index.html">⬅️ Back</a>
+    <div class="input-group">
+      <input type="text" id="todo-input" placeholder="Add task...">
+      <button onclick="addTask()">Add</button>
+    </div>
+    <ul id="todo-list"></ul>
+    <button class="reset" onclick="resetTasks()">🗑️ Reset All</button>
+  </div>
+  <script>
+    let tasks = [];
+    function addTask() {
+      const input = document.getElementById("todo-input");
+      const text = input.value.trim();
+      if (text === "") return;
+      tasks.push(text);
+      input.value = "";
+      showTasks();
+    }
+    function showTasks() {
+      var list = document.getElementById("todo-list");
+      list.innerHTML = "";
+      for (var i = 0; i < tasks.length; i++) {
+      var li = document.createElement("li");
+      var span = document.createElement("span");
+      span.textContent = tasks[i];
+      var delBtn = document.createElement("button");
+      delBtn.textContent = "❌";
+      delBtn.className = "delete-btn";
+      delBtn.onclick = function(index) {
+        return function() {
+          deleteTask(index);
+        };
+      }(i);
+      li.appendChild(span);
+      li.appendChild(delBtn);
+      list.appendChild(li);
+    }
+  }
+  function deleteTask(index) {
+    tasks.splice(index, 1);
+    showTasks();
+  }
+  function resetTasks() {
+    tasks = [];
+    showTasks();
+  }
+</script>
+</body>
+</html>

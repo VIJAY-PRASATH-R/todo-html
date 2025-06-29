@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Notes</title>
+  <link rel="stylesheet" href="./saved.css">
+</head>
+<body>
+  <div class="container">
+    <h2>💾 Saved Preview</h2>
+    <a href="index.html">⬅️ Back</a>
+
+    <h3>📝 To-Do:</h3>
+    <ul id="saved-todo"></ul>
+
+    <h3>📒 Notes:</h3>
+    <div id="saved-notes" class="note-box"></div>
+  </div>
+
+  <script>
+    const savedTodos = JSON.parse(localStorage.getItem("tasks")) || [];
+    const savedNotes = localStorage.getItem("notes") || "";
+
+    const todoList = document.getElementById("saved-todo");
+    savedTodos.forEach(item => {
+      const li = document.createElement("li");
+      li.textContent = item.text;
+      todoList.appendChild(li);
+    });
+
+    document.getElementById("saved-notes").textContent = savedNotes;
+  </script>
+</body>
+</html>
